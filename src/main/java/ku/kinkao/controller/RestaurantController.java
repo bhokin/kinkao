@@ -1,7 +1,7 @@
 package ku.kinkao.controller;
 
-import ku.kinkao.model.Restaurant;
-import ku.kinkao.repository.RestaurantRepository;
+import ku.kinkao.dto.RestaurantDto;
+import ku.kinkao.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +15,11 @@ public class RestaurantController {
 
     // --- dependencies injection / inversion of control
    @Autowired
-   private RestaurantRepository repository;
+   private RestaurantService restaurantService;
 
    @GetMapping("/restaurant")
    public String getRestaurantPage(Model model) {
-       model.addAttribute("restaurants", repository.findAll());
+       model.addAttribute("restaurants", restaurantService.getRestaurants());
        return "restaurant";  // return name of homepage which is restaurant.html
    }
 
@@ -29,9 +29,9 @@ public class RestaurantController {
    }
 
    @PostMapping("/restaurant/add")
-   public String addRestaurant(@ModelAttribute Restaurant restaurant, 
+   public String addRestaurant(@ModelAttribute RestaurantDto restaurant,
                                Model model) {
-       repository.save(restaurant);
+       restaurantService.create(restaurant);
        return "redirect:/restaurant";
    }
 

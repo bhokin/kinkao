@@ -3,6 +3,7 @@ package ku.kinkao.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.UUID;
 
 @Data
@@ -18,4 +19,5 @@ public class Member {
    private String password;
    private String firstName;
    private String lastName;
+   private Instant createdAt;
 }
