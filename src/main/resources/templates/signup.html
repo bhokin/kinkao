@@ -43,6 +43,11 @@
                 <input id="inputPassword" type="password" th:field="*{password}" name="password" class="form-control">
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
             </div>
+            <div class="mb-3">
+                <label for="inputEmail">Email</label>
+                <input id="inputEmail" type="text" th:field="*{email}" class="form-control">
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
 
             <button id="submit-button" type="submit" class="btn btn-primary">Sign Up</button>
         </form>
