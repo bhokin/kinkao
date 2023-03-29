@@ -22,16 +22,12 @@ public class RestaurantService {
     private ModelMapper modelMapper;
 
     public RestaurantResponse getRestaurantById(UUID restaurantId) {
-        System.out.println("+++ getRestaurantById is called");
-        System.out.println("+++ restaurantId is " + restaurantId);
         List<Restaurant> restaurants = repository.findAll();
         Restaurant restaurant = null;
 
         for (Restaurant r: restaurants) {
-            System.out.println(r.getId());
             if (r.getId().equals(restaurantId)) {
                 restaurant = r;
-                System.out.println("***" + r);
                 break;
             }
         }
@@ -43,7 +39,6 @@ public class RestaurantService {
     // mapping DAO -> DTO
     public List<RestaurantResponse> getRestaurants() {
         List<Restaurant> restaurants = repository.findAll();
-        System.out.println(restaurants);
 
         List<RestaurantResponse> dtos = restaurants
                 .stream()
