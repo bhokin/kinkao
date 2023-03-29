@@ -22,7 +22,20 @@ public class RestaurantService {
     private ModelMapper modelMapper;
 
     public RestaurantResponse getRestaurantById(UUID restaurantId) {
-        Restaurant restaurant = repository.findById(restaurantId).get();
+        System.out.println("+++ getRestaurantById is called");
+        System.out.println("+++ restaurantId is " + restaurantId);
+        List<Restaurant> restaurants = repository.findAll();
+        Restaurant restaurant = null;
+
+        for (Restaurant r: restaurants) {
+            System.out.println(r.getId());
+            if (r.getId().equals(restaurantId)) {
+                restaurant = r;
+                System.out.println("***" + r);
+                break;
+            }
+        }
+
         return modelMapper.map(restaurant, RestaurantResponse.class);
     }
 
