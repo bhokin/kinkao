@@ -26,9 +26,11 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/restaurant}">Restaurant</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/restaurant/add}">Add Restaurant</a>
-                </li>
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/restaurant/add}">Add Restaurant</a>
+                    </li>
+                </div>
             </ul>
 
             <div sec:authorize="isAuthenticated()">

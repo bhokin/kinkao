@@ -48,6 +48,13 @@
                 <input id="inputEmail" type="text" th:field="*{email}" class="form-control">
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
             </div>
+            <div class="mb-3">
+                <label for="inputRole">Role</label>
+                <select id="inputRole" name="role" class="form-select">
+                    <option value="ROLE_USER" selected>User</option>
+                    <option value="ROLE_ADMIN">Admin</option>
+                </select>
+            </div>
 
             <button id="submit-button" type="submit" class="btn btn-primary">Sign Up</button>
         </form>
